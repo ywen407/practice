@@ -18,6 +18,7 @@ Plugin 'yggdroot/indentline'
 Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-fugitive'
+Plugin 'scrooloose/nerdcommenter'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -36,10 +37,10 @@ let g:indentLine_leadingSpaceEnabled = 1
 let g:indentLine_leadingSpaceChar = '·'
 let g:indentLine_char = '>'
 "----------------------NERDTree
-map <F7> :NERDTreeToggle<CR>
+map <C-N> :NERDTreeToggle<CR>
 
 "----------------------Tagbar
-nmap <F8> :TagbarToggle<CR>
+nmap <C-T> :TagbarToggle<CR>
 
 "----------------------YCM
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
@@ -53,6 +54,10 @@ let g:ycm_min_num_of_chars_for_completion = 1    " 기본값은 2입니다. 문�
 let g:ycm_auto_trigger = 1    " 기본값은 1입니다. '.'이나 '->'을 받으면 자동으로 목록들을 출력해주죠.
 let g:ycm_collect_identifiers_from_tags_files = 1    " tags 파일을 사용합니다. 성능상 이익이 있는걸로 알고 있습니다.
 
+nnoremap <F2> :YcmCompleter GoTo<CR>
+nnoremap <F3> :YcmCompleter GoToInclude<CR>
+nnoremap <F4> :YcmCompleter GoToDeclaration<CR>
+nnoremap <F5> :YcmDiags<CR>
 "-----------------------Vim airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='wombat'
@@ -63,5 +68,12 @@ let g:airline#extensions#ycm#enabled = 1
 let g:airline#extensions#ycm#error_symbol = 'E:' 
 let g:airline#extensions#ycm#warning_symbol = 'W:'
 "-----------------------compile
-nmap <F5> :!sudo clang++ -std=c++11 -stdlib=libc++ -lc++abi % -o %.exe <CR>
-
+nmap <F6> :!sudo clang++ -std=c++11 -stdlib=libc++ -lc++abi % -o %.exe <CR>
+nmap <F7> :!sudo make 
+"---------------------------etc
+nmap <C-V> :vnew 
+nmap <C-C> :new 
+map <C-Z> :bnext<CR>
+map <C-X> :bprevious<CR>
+map <C-A> :badd 
+map <C-D> :bdelete 
